@@ -27,7 +27,10 @@ a{
 .img_perfil{
   border-radius: 180px;
   margin: 15px;
+  width: 250px;
+  border: 2px solid black;
 }
+
 
 .nome_perfil{
   display: flex;
@@ -42,10 +45,7 @@ a{
 }
 
 .card_solo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  padding: 5px;
   border: 2px solid green;
   border-radius: 45px;
 }
@@ -53,4 +53,19 @@ a{
 .infos_perfil{
   display: flex;
   flex-direction: column;
+}
+
+.card3{
+  display: flex;
+  flex: 1;
+  border: 2px solid black;
+}
+
+.container h1{
+  padding: 15px;
+}
+
+.photo_character{
+  display: flex;
+  justify-content: center;
 }

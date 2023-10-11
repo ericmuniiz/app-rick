@@ -6,7 +6,7 @@ import '../App.css'
 function Character() {
 
     const [character, setCharacter] = useState();
-    const [episodes, setEpisodes] = useState();
+    const [episodes, setEpisodes] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
@@ -25,32 +25,36 @@ function Character() {
 
     }, [])
 
+
     
         const forLimit = async () => {
+
+            const allEpisodes = [];
+
             for(let i = 0 ; i < character.episode.length ; i++){
 
-                let url = character.episode[i];
-                let epResponse = await fetch(url);
-                let epData = await epResponse.json();
+                const url = character.episode[i];
+                const epResponse = await fetch(url);
+                const epData = await epResponse.json();
 
-                console.log("Número: " + epData.episode + " Nome: " + epData.name);
                 
-                
+
+                allEpisodes.push(epData) 
                 
                 
             }
-            
-        }
+
+                setEpisodes(allEpisodes);
+                console.log(allEpisodes);
+        }   
         
         
-        {character && (
-            character.episode && (
-                forLimit()
                 
-            )
-            
-        )}
-       
+           useEffect(() => {
+        if (character) {
+            forLimit();
+        }
+    }, [character]);
     
 
 
@@ -62,19 +66,31 @@ function Character() {
                     <div className="container">
 
                         <div className='card_solo'>
+                            <div className='photo_character'>
                             <img src={character.image} className='img_perfil' />
+                            </div>
+                            
                             <div className='infos_perfil'>
                                 <h3>Nome: {character.name}</h3>
                                 <h3>Status: {character.status}</h3>
                                 <h3>Espécie: {character.species}</h3>
                             </div>
                             <h1>Episódios:</h1>
-
-                            {character.episode && (
-                                <>
-                               <p></p>
-                                </>
-                            )}
+                            <div>
+                                {episodes && (
+                                    <>
+                                        {Object.values(episodes).map((i) => (
+                                            <>
+                                            <div className='card3'>
+                                            <p>Número: {i.episode} Nome: {i.name && i.name}</p>
+                                            </div>
+                                            
+                                            </>
+                                        ))}
+                                    </>
+                                )}
+                            </div>
+                            
                         </div>
 
                     </div>
