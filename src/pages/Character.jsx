@@ -21,41 +21,41 @@ function Character() {
         }
 
         fetchData()
-        
+
 
     }, [])
 
 
-    
-        const forLimit = async () => {
 
-            const allEpisodes = [];
+    const forLimit = async () => {
 
-            for(let i = 0 ; i < character.episode.length ; i++){
+        const allEpisodes = [];
 
-                const url = character.episode[i];
-                const epResponse = await fetch(url);
-                const epData = await epResponse.json();
+        for (let i = 0; i < character.episode.length; i++) {
 
-                
+            const url = character.episode[i];
+            const epResponse = await fetch(url);
+            const epData = await epResponse.json();
 
-                allEpisodes.push(epData) 
-                
-                
-            }
 
-                setEpisodes(allEpisodes);
-                console.log(allEpisodes);
-        }   
-        
-        
-                
-           useEffect(() => {
+
+            allEpisodes.push(epData)
+
+
+        }
+
+        setEpisodes(allEpisodes);
+        console.log(allEpisodes);
+    }
+
+
+
+    useEffect(() => {
         if (character) {
             forLimit();
         }
     }, [character]);
-    
+
 
 
 
@@ -67,9 +67,9 @@ function Character() {
 
                         <div className='card_solo'>
                             <div className='photo_character'>
-                            <img src={character.image} className='img_perfil' />
+                                <img src={character.image} className='img_perfil' />
                             </div>
-                            
+
                             <div className='infos_perfil'>
                                 <h3>Nome: {character.name}</h3>
                                 <h3>Status: {character.status}</h3>
@@ -81,16 +81,16 @@ function Character() {
                                     <>
                                         {Object.values(episodes).map((i) => (
                                             <>
-                                            <div className='card3'>
-                                            <p>Número: {i.episode} Nome: {i.name && i.name}</p>
-                                            </div>
-                                            
+                                                <div className='card3'>
+                                                    <p>Número: {i.episode} Nome: {i.name && i.name}</p>
+                                                </div>
+
                                             </>
                                         ))}
                                     </>
                                 )}
                             </div>
-                            
+
                         </div>
 
                     </div>

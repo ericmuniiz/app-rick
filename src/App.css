@@ -25,6 +25,7 @@ a{
 }
 
 .img_perfil{
+  display: flex;
   border-radius: 180px;
   margin: 15px;
   width: 250px;
@@ -69,3 +70,4 @@ a{
   display: flex;
   justify-content: center;
 }
+

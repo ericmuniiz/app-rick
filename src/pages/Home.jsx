@@ -27,6 +27,14 @@ function Home() {
     
         <div>
           <h1>Lista de Personagens</h1>
+          <input type="text" name="input" id="" /><button>Pesquisar</button> 
+
+          <select name="" id="">
+            <option value="">Todos</option>
+            <option value="Alive">Vivo</option>
+            <option value="Dead">Morto</option>
+            <option value="unknown">Desconhecido</option>
+          </select>
         </div>
         {character.results && (
           <>
